@@ -20,10 +20,20 @@ st.markdown("Choose the config and size to compare the correctness plots")
 st.markdown("The plots on the left are for pretrained and the plots on the right are untrained models")
 
 # Select the config
-selected_config = st.multiselect("Select the config", configs, default=['layer_0'])
+select_all_configs = st.checkbox("Select All Configs")
+if select_all_configs:
+    default_configs = configs
+else:
+    default_configs = ['layer_0']
+selected_config = st.multiselect("Select the config", configs, default=default_configs, disabled=select_all_configs)
 
 # select sizes
-selected_size = st.multiselect("Select the string length", [16, 32, 64, 128, 256, 512, 1024], default=[16])
+select_all_sizes = st.checkbox("Select All Sizes")
+if select_all_sizes:
+    default_sizes = [16, 32, 64, 128, 256, 512, 1024]
+else:
+    default_sizes = [16]
+selected_size = st.multiselect("Select the string length", default_sizes, default=default_sizes, disabled=select_all_sizes)
 
 # sort the selected config which contain the word layer by the layer number
 sorted_selected_config = []
