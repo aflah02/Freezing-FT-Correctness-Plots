@@ -28,11 +28,11 @@ selected_size = st.multiselect("Select the string length", [16, 32, 64, 128, 256
 # sort the selected config which contain the word layer by the layer number
 sorted_selected_config = []
 for i in range(len(selected_config)):
-    if "layer" not in selected_config[i]:
+    if "layer_" not in selected_config[i]:
         sorted_selected_config.append(selected_config[i])
 selected_config_with_layer = []
 for i in range(len(selected_config)):
-    if "layer" in selected_config[i]:
+    if "layer_" in selected_config[i]:
         selected_config_with_layer.append(selected_config[i])
 # sort the selected_config_with_layer by the layer number
 selected_config_with_layer.sort(key=lambda x: int(x.split("_")[-1]))
